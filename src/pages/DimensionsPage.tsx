@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import DimensionForm from '../components/dimensions/DimensionForm';
 import { Container } from '@mui/material';
 import {
@@ -20,15 +20,14 @@ import EditDimensionModal from '../components/dimensions/EditDimensionModal';
 import HorizontalDivider from '../components/common/ HorizontalDivider';
 
 const DimensionsPage: React.FC = () => {
-  const [dimensions, setDimensions] = useState<Dimension[] | []>([]);
-  const [dimension, setDimension] = useState<Dimension>();
-  const [categories, setCategories] = useState<DimensionCategory[] | []>([]);
-  const [category, setCategory] = useState<DimensionCategory>();
-  const [isDimensionModalOpen, setIsDimensionModalOpen] = useState(false);
+  const [dimensions, setDimensions] = React.useState<Dimension[] | []>([]);
+  const [dimension, setDimension] = React.useState<Dimension>();
+  const [categories, setCategories] = React.useState<DimensionCategory[] | []>([]);
+  const [category, setCategory] = React.useState<DimensionCategory>();
+  const [isDimensionModalOpen, setIsDimensionModalOpen] = React.useState(false);
+  const [isDimensionCategoryModalOpen, setIsDimensionCategoryModalOpen] = React.useState(false);
 
-  const [isDimensionCategoryModalOpen, setIsDimensionCategoryModalOpen] = useState(false);
-
-  useEffect(() => {
+  React.useEffect(() => {
     const loadDimensions = async () => {
       const data = await fetchDimensions();
       setDimensions(data);
@@ -36,7 +35,7 @@ const DimensionsPage: React.FC = () => {
     loadDimensions();
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const loadDimensionCategories = async () => {
       const data = await fetchDimensionCategories();
       setCategories(data);

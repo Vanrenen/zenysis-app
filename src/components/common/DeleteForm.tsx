@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Container,
   Box,
@@ -15,7 +15,7 @@ interface Props {
 }
 
 const DeleteForm: React.FC<Props> = ({ onDelete, errorMessage, inputLabel, buttonText }) => {
-  const [id, setId] = useState<string>();
+  const [id, setId] = React.useState<string>();
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Container } from '@mui/material';
 import IndicatorForm from '../components/indicators/IndicatorForm';
 import { 
   fetchIndicators,
@@ -11,7 +12,6 @@ import {
   updateIndicatorCategory,
 } from '../services/api';
 import { Indicator, IndicatorCategory } from '../types/IndicatorTypes';
-import { Container } from '@mui/material';
 import DeleteForm from '../components/common/DeleteForm';
 import ListComponent from '../components/common/ListComponent';
 import IndicatorCategoriesForm from '../components/indicatorCategories/IndicatorCategoriesForm';
@@ -20,15 +20,14 @@ import EditIndicatorCategoryModal from '../components/indicatorCategories/EditIn
 import HorizontalDivider from '../components/common/ HorizontalDivider';
 
 const IndicatorsPage: React.FC = () => {
-  const [indicators, setIndicators] = useState<Indicator[] | []>([]);
-  const [indicator, setIndicator] = useState<Indicator>()
-  const [categories, setCategories] = useState<IndicatorCategory[] | []>([]);
-  const [category, setCategory] = useState<IndicatorCategory>();
-  const [isIndicatorModalOpen, setIsIndicatorModalOpen] = useState(false);
-  const [modalCode, setModalCode] = useState<string>('')
-  const [isIndicatorCategoryModalOpen, setIsIndicatorCategoryModalOpen] = useState(false);
+  const [indicators, setIndicators] = React.useState<Indicator[] | []>([]);
+  const [indicator, setIndicator] = React.useState<Indicator>()
+  const [categories, setCategories] = React.useState<IndicatorCategory[] | []>([]);
+  const [category, setCategory] = React.useState<IndicatorCategory>();
+  const [isIndicatorModalOpen, setIsIndicatorModalOpen] = React.useState(false);
+  const [isIndicatorCategoryModalOpen, setIsIndicatorCategoryModalOpen] = React. useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const loadIndicators = async () => {
       const data = await fetchIndicators();
       setIndicators(data);
@@ -36,7 +35,7 @@ const IndicatorsPage: React.FC = () => {
     loadIndicators();
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const loadIndicatorCategories = async () => {
       const data = await fetchIndicatorsCategories();
       setCategories(data);

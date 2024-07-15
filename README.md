@@ -39,3 +39,4 @@ Endless scrolling
 Paging  
 Evironment variables setup  
 Use custom hooks for api calls  
+Adding more tests  

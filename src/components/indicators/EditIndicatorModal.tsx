@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Modal from '../common/Modal';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -128,7 +128,7 @@ const EditIndicatorModal: React.FC<EditIndicatorModalProps> = ({isModalOpen, clo
       </form>
     </Container>
   <Button variant={'contained'} onClick={closeModal} sx={{float: 'left'}}>Cancel</Button>
-  <Button variant={'contained'} type="submit" sx={{float: 'right'}}>Edit</Button>
+  <Button variant={'contained'} type="submit" sx={{float: 'right'}}>Submit</Button>
 </Modal>
  )
 }
