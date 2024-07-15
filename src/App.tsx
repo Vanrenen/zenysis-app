@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/common/NavBar';
 
-function App() {
+const HomePage = lazy(() => import('./pages/HomePage'));
+const IndicatorsPage = lazy(() => import('./pages/IndicatorsPage'));
+const DimensionsPage = lazy(() => import('./pages/DimensionsPage'));
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Navbar />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/indicators" element={<IndicatorsPage />} />
+            <Route path="/dimensions" element={<DimensionsPage />} />
+          </Routes>
+        </Suspense>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
